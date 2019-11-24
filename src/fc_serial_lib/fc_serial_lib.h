@@ -1,5 +1,6 @@
 #ifndef fcSerialLib_h
 #define fcSerialLib_h
+#endif
 
 #include "Arduino.h"
 #include "HardwareSerial.h"
@@ -13,5 +14,5 @@ class FcSerial{
         int _syncCounter;
         
         void toBytes(uint16_t input, byte retval[2]);
-        void writeToSerial(byte value[2])
-}
+        void writeToSerial(byte value[2]);
+};

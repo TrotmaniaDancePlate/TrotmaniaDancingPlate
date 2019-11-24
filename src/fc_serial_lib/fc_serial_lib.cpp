@@ -30,6 +30,6 @@ void FcSerial::toBytes(uint16_t input, byte retval[2])
 }
 
 void FcSerial::writeToSerial(byte value[2]) {
-    Serial.write(value, 2)
+    Serial.write(value, 2);
     Serial.flush();
 }

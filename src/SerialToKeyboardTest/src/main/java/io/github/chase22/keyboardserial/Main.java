@@ -11,12 +11,12 @@ import java.io.IOException;
 public class Main {
     public static void main(String[] args) throws SerialPortException, IOException, AWTException {
         Application app = new Application();
-        SerialController controller = new SerialController(KeyEvent.VK_A, app);
+        SerialController controller = new SerialController(KeyEvent.VK_UP, app);
 
         FcReader fcReader = new FcReader(controller::newValue);
 
         app.run();
-
+        
         fcReader.close();
     }
 }

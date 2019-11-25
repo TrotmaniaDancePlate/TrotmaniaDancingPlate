@@ -3,6 +3,8 @@ package io.github.chase22.keyboardserial.serial;
 import jssc.SerialPort;
 import jssc.SerialPortException;
 
+import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.nio.ByteBuffer;
 import java.util.function.Consumer;
 
@@ -14,7 +16,7 @@ public class FcReader {
     private Thread readerThread;
     private Consumer<Short> valueConsumer;
 
-    public FcReader(final Consumer<Short> valueConsumer) throws SerialPortException {
+    public FcReader(final Consumer<Short> valueConsumer) throws SerialPortException, AWTException {
         this.valueConsumer = valueConsumer;
         port = new SerialPort("/dev/ttyUSB0");
         port.openPort();
@@ -22,6 +24,23 @@ public class FcReader {
 
         readerThread = new Thread(new ReaderThread());
         readerThread.start();
+
+
+        Robot robot = new Robot();
+        new Thread(() -> {
+            try {
+                while (!Thread.interrupted()) {
+                    robot.keyPress(KeyEvent.VK_RIGHT);
+                    Thread.sleep(1500);
+                    robot.keyRelease(KeyEvent.VK_RIGHT);
+                    robot.keyPress(KeyEvent.VK_LEFT);
+                    Thread.sleep(1500);
+                    robot.keyRelease(KeyEvent.VK_LEFT);
+                }
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }).start();
     }
 
     public void close() throws SerialPortException {

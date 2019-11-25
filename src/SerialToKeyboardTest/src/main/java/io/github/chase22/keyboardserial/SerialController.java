@@ -18,7 +18,7 @@ public class SerialController {
     public void newValue(short value) {
         serialUiInterface.newValue(value);
 
-        if (value > serialUiInterface.getThreshold()) {
+        if (value > serialUiInterface.getThreshold() && serialUiInterface.isActive()) {
             robot.keyPress(key);
             try {
                 Thread.sleep(10);

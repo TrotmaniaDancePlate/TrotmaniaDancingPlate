@@ -1,0 +1,5 @@
+profile: service
+defaultPackage: serial.keyboard
+---
+testFramework: spock
+sourceLanguage: kotlin

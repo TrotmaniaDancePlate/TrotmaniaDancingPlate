@@ -23,6 +23,7 @@ configurations {
 }
 
 dependencies {
+    //Micronaut
     implementation platform("io.micronaut:micronaut-bom:$micronautVersion")
     implementation "io.micronaut.configuration:micronaut-jdbc-tomcat"
     implementation "io.micronaut.data:micronaut-data-jdbc"
@@ -38,6 +39,12 @@ dependencies {
     kapt "io.micronaut:micronaut-validation"
     kaptTest platform("io.micronaut:micronaut-bom:$micronautVersion")
     kaptTest "io.micronaut:micronaut-inject-java"
+
+    //Serial
+    implementation 'com.fazecast:jSerialComm:2.5.3'
+
+
+    //Database
     runtimeOnly "com.h2database:h2"
     runtimeOnly "ch.qos.logback:logback-classic:1.2.3"
     runtimeOnly "com.fasterxml.jackson.module:jackson-module-kotlin:2.9.8"

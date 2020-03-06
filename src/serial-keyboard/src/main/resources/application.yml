@@ -15,3 +15,6 @@ datasources:
     schema-generate: CREATE_DROP
     dialect: H2
 
+application:
+  serial:
+    port-name: "/dev/pts/5"
